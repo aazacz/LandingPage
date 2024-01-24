@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar'
 import HomepageSvg from '../Components/HomepageSvg'
 import About from '../Components/About'
 import BottomSide from '../Components/BottomSide'
+import Footer from '../Components/Footer'
 
 const Home = () => {
   return (
@@ -42,6 +43,7 @@ const Home = () => {
 
       <About />
       <BottomSide/>
+      <Footer/>
     </>
   )
 }

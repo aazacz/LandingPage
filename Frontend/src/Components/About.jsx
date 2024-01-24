@@ -50,7 +50,7 @@ const About = () => {
             <div className='mt-20'>
                 {HomeData.map((value, key) => {
                     return (
-                        <div className='w-full flex py-12 items-center'>
+                        <div key={key} className='w-full flex py-12 items-center'>
                             <div className='w-1/2'>
                                 <img src={`${baseUrl}/${value.img}`} className='w-[300px]' alt="" />
                             </div>

@@ -34,7 +34,8 @@ export default  {
       'lightPinkDark': '#504E4E',
       "TextBlue":"#37447E",
       "DarkBlue":"#111B47",
-      "LightBlue":"#E7ECFF"
+      "LightBlue":"#E7ECFF",
+      "MediumBlue":"#E7ECFF"
     },
   },
   plugins: [],
