@@ -1,4 +1,4 @@
-This is a [React.js] project bootstrapped with [`create-vite@latest`]
+This is a [React.js] project created with [`create-vite@latest`]
 
 ## Getting Started
 
