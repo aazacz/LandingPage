@@ -4,7 +4,10 @@ const app = express()
 const UserRoute = require("./Router/UserRoute")
 const port = process.env.port 
 const cors = require('cors');
+const mongodbconnnect = require('./Config/mongodbServer')
 
+
+mongodbconnnect()
 // const corsOptions = {
 //     origin: 'http://localhost:5173.',
 //     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

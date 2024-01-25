@@ -4,6 +4,7 @@ import HomepageSvg from '../Components/HomepageSvg'
 import About from '../Components/About'
 import BottomSide from '../Components/BottomSide'
 import Footer from '../Components/Footer'
+import ErrorBoundary from '../Components/ErrorBoundary'
 
 const Home = () => {
   return (
@@ -43,6 +44,7 @@ const Home = () => {
 
       <About />
       <BottomSide/>
+
       <Footer/>
     </>
   )

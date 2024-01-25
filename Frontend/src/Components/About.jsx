@@ -2,19 +2,29 @@ import React, { useEffect, useState } from 'react'
 import TitleIcon from './TitleIcon'
 import HomepageSvg2 from './HomepageSvg2'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const About = () => {
     const baseUrl = "http://localhost:3000/images"
     const [HomeData, setHomeData] = useState([])
-    useEffect(() => {
-        axios.get("http://localhost:3000/homeDetails").then((response) => {
+   
+    const handleOnError = (e) => {
+          e.target.src = "./public/default.jpg";
+    }
 
+    useEffect(() => {
+        axios.get("http://localhost:3000/homeDetail").then((response) => {
             console.log(response.data);
             setHomeData(response.data)
+        }).catch((error)=>{
+            console.log(error.message);
+            throw new Error(error.message)
         })
 
 
     }, [])
+
+
 
     return (
         <div className='px-28 py-20 '>
@@ -46,24 +56,28 @@ const About = () => {
                     <HomepageSvg2 />
                 </div>
             </div>
-           
-            <div className='mt-20'>
+
+            <div className='mt-20 px-14'>
                 {HomeData.map((value, key) => {
                     return (
-                        <div key={key} className='w-full flex py-12 items-center'>
+                        <Link key={key} to={value.link}> 
+                        <div  className='w-full flex py-12 items-center'>
                             <div className='w-1/2'>
-                                <img src={`${baseUrl}/${value.img}`} className='w-[300px]' alt="" />
+                                <img src={`${baseUrl}/${value.img}`} onError={handleOnError} className='w-[300px]' alt="" />
                             </div>
 
                             <div className='w-1/2'>
                                 <h1 className='text-xl pt-4 font-bold '>{value.heading}</h1>
-                                <h3 className='pt-2 text-gray-700'>{value.text}</h3>
+                                <div className='w-2/3'>
+                                <h3 className='pt-2 text-gray-700 text-sm'>{value.text}</h3>
+                                </div>
                             </div>
                         </div>
+                        </Link>
                     )
                 })
                 }
- 
+
             </div>
         </div>
 
