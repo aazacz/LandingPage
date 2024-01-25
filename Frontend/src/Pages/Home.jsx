@@ -41,11 +41,11 @@ const Home = () => {
         </div>
 
       </div>
-
-      <About />
-      <BottomSide/>
-
-      <Footer/>
+      
+        <About />
+        <BottomSide />
+   
+      <Footer />
     </>
   )
 }

@@ -7,27 +7,41 @@ import { Link } from 'react-router-dom'
 const About = () => {
     const baseUrl = "http://localhost:3000/images"
     const [HomeData, setHomeData] = useState([])
-   
+    const [error, setError] = useState(false)
+    const [errorMessage, seterrorMessage] = useState("")
+    const [loading, setLoading] = useState(true);
     const handleOnError = (e) => {
-          e.target.src = "./public/default.jpg";
+        e.target.src = "./public/default.jpg";
     }
 
     useEffect(() => {
-        axios.get("http://localhost:3000/homeDetail").then((response) => {
+        axios.get("http://localhost:3000/homeDetails").then((response) => {
             console.log(response.data);
             setHomeData(response.data)
-        }).catch((error)=>{
+            setLoading(false);
+        }).catch((error) => {
             console.log(error.message);
-            throw new Error(error.message)
+            setError(true)
+            seterrorMessage(error.message);
+            setLoading(false);
+
         })
 
 
     }, [])
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        throw new Error(errorMessage);
+    }
 
 
     return (
-        <div className='px-28 py-20 '>
+
+         <div className='px-28 py-20 '>
             <div className='flex items-center'>
                 <div className='w-1/2'>
                     <h1 className='text-TextBlue text-4xl font- font-Roboto'> Light, Fast & Powerful</h1>
@@ -58,21 +72,21 @@ const About = () => {
             </div>
 
             <div className='mt-20 px-14'>
-                {HomeData.map((value, key) => {
+                {HomeData && HomeData?.map((value, key) => {
                     return (
-                        <Link key={key} to={value.link}> 
-                        <div  className='w-full flex py-12 items-center'>
-                            <div className='w-1/2'>
-                                <img src={`${baseUrl}/${value.img}`} onError={handleOnError} className='w-[300px]' alt="" />
-                            </div>
+                        <Link key={key} to={value.link}>
+                            <div className='w-full flex py-12 items-center'>
+                                <div className='w-1/2'>
+                                    <img src={`${baseUrl}/${value.img}`} onError={handleOnError} className='w-[300px]' alt="" />
+                                </div>
 
-                            <div className='w-1/2'>
-                                <h1 className='text-xl pt-4 font-bold '>{value.heading}</h1>
-                                <div className='w-2/3'>
-                                <h3 className='pt-2 text-gray-700 text-sm'>{value.text}</h3>
+                                <div className='w-1/2'>
+                                    <h1 className='text-xl pt-4 font-bold '>{value.heading}</h1>
+                                    <div className='w-2/3'>
+                                        <h3 className='pt-2 text-gray-700 text-sm'>{value.text}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </Link>
                     )
                 })
@@ -80,7 +94,7 @@ const About = () => {
 
             </div>
         </div>
-
+    
     )
 }
 
