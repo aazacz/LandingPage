@@ -1,13 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TitleIcon from '../Components/TitleIcon'
+import axios from 'axios'
+
 
 const Featurepage1 = () => {
-    const [image,setimage] = useState()
+    const [HomeData, setHomeData] = useState([])  
     const handleOnError = (e) => {
-        console.error("Image loading failed:", e);
-        e.target.src =
-          "./public/default.jpg";
+            e.target.src =  "./public/default.jpg";
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/ProductDetails").then((response) => {
+            console.log(response.data);
+            setHomeData(response.data)
+            setLoading(false);
+        }).catch((error) => {
+            console.log(error.message);
+            setError(true)
+            seterrorMessage(error.message);
+            setLoading(false);
+
+        })
+
+
+    }, [])
+
+
+
     return (
         <div className=' w-full flex items-center justify-center p-32 '>
             <div className='w-1/2'>

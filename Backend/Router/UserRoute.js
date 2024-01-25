@@ -7,4 +7,5 @@ UserRoute.use(express.urlencoded({ extended: true }))
 
 
 UserRoute.get('/homeDetails',userController.getDetails )
+UserRoute.get('/ProductDetails',userController.ProductDetails )
 module.exports = UserRoute
