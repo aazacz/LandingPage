@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className='body'>
+      <div className='body relative w-screen overflow-x-hidden'>
 
         <div className=' absolute md:top-0  top-12 md:right-0 -z-10'>
           <svg   className='md:w-[823px] md:h-[812px] w-[523px] h-[750px]'   >

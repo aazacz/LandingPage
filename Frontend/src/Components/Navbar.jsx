@@ -29,7 +29,7 @@ const Navbar = () => {
                 )
             })} </div>
             <div className='md:absolute left-1/2 text-TextBlue md:text-3xl font-bold hidden md:block '>Landing</div>
-            {User && User.name != "" ? <div className='absolute left-[920px] text-DarkBlue text-lg font-Roboto font-semibold'>Hai {User.name} </div> : <div className='absolute left-[850px] text-DarkBlue text-lg font-Roboto font-semibold'>Hai Guest </div>}
+            {User && User.name != "" ? <div className='absolute md:left-[920px] left-[180px] text-DarkBlue text-lg font-Roboto font-semibold'>Hai {User.name} </div> : <div className='absolute md:left-[850px] left-[180px] text-DarkBlue text-lg font-Roboto font-semibold'>Hai Guest </div>}
 
             <div className='flex flex-col md:flex-row gap-4'>
 
