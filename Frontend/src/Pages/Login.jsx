@@ -39,9 +39,6 @@ function Login() {
 
     }
 
-
-
-
     return (
         <section className="h-auto md:py-[60px] mx-5  flex items-center justify-center 
                             md:mx-12
