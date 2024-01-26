@@ -4,7 +4,8 @@ import HomepageSvg2 from './HomepageSvg2'
 
 import { Link } from 'react-router-dom'
 import axiosInstanceUser from '../Services/AxiosInstance'
-const About = () => {
+const About = () => { 
+    
     const baseUrl = "https://landing-page-gan4.onrender.com/images"
     const [HomeData, setHomeData] = useState([])
     const [error, setError] = useState(false)
