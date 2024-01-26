@@ -10,7 +10,7 @@ const Featurepage1 = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:3000/ProductDetails").then((response) => {
+        axios.get("https://landing-page-gan4.onrender.com/ProductDetails").then((response) => {
                     setHomeData(response.data)
                     setLoading(false);
         }).catch((error) => {

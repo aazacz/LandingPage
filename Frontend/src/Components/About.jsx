@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TitleIcon from './TitleIcon'
 import HomepageSvg2 from './HomepageSvg2'
-
+import '../App.css'
 import { Link } from 'react-router-dom'
 import axiosInstanceUser from '../Services/AxiosInstance'
 const About = () => { 
@@ -33,7 +33,9 @@ const About = () => {
     }, [])
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div class="flex items-center justify-center min-h-screen bg-gray-900">
+        <div class="loader"></div>
+                 </div>;
     }
 
     if (error) {
