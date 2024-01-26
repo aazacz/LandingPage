@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomepageSvg2 = () => {
     return (
-        <svg width="540" height="425" viewBox="0 0 540 525" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="540" height="425" className='md:w-[540px] md:h-[425px] w-[340px] h-[225px]' viewBox="0 0 540 525"  fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M125.187 397.963L167 331.841L73.3587 271.963L25 348.436L102.453 397.963H125.187Z" fill="#F0F0F0" />
             <path fill-rule="evenodd" clip-rule="evenodd" d="M80 416.963H183V396.963H80V416.963ZM181.662 415.673H81.3377V398.253H181.662V415.673Z" fill="#3F3D56" />
             <path d="M171.5 413.963C175.09 413.963 178 411.053 178 407.463C178 403.873 175.09 400.963 171.5 400.963C167.91 400.963 165 403.873 165 407.463C165 411.053 167.91 413.963 171.5 413.963Z" fill="#222F65" />

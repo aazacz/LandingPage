@@ -2,8 +2,10 @@ import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../Routes/Router';
 import axiosInstanceUser from '../Services/AxiosInstance';
-const Navbar = () => {
+import { GiHamburgerMenu } from "react-icons/gi";
 
+const Navbar = () => {
+    const [open,SetOpen] =useState(false)
     const navlink = ["Home", 'About', "Contact"]
     const Authcontext = useContext(AuthContext);
     const { User, setUser } = Authcontext
@@ -13,28 +15,31 @@ const Navbar = () => {
             setUser({ name: "", email: "", auth: "" });
 
         })
+
+
     }
     return (
-        <div className='w-full h-[100px]  px-20 flex justify-between items-center z-30'>
+        <div className='w-full h-[100px] px-4 md:px-20 flex justify-between items-center z-30'>
 
-
-            <div className='w-[300px] flex justify-between items-center'> {navlink.map((value, key) => {
+            {<GiHamburgerMenu onClick={()=>SetOpen(!open)} className={`md:hidden ${open? "rotate-90":"rotate-0"}`} />}
+            
+            <div className={`md:w-[300px] md:flex  justify-between items-center transition-all duration-300 md:translate-x-0 ${open? "-translate-x-24":"-translate-x-56"}`}> {navlink.map((value, key) => {
                 return (
-                    <span key={key} className='text-TextBlue'>{value}</span>
+                    <div key={key} className='text-TextBlue'>{value}</div>
                 )
             })} </div>
-            <div className='absolute left-1/2 text-TextBlue text-3xl font-bold '>Landing</div>
+            <div className='md:absolute left-1/2 text-TextBlue md:text-3xl font-bold hidden md:block '>Landing</div>
             {User && User.name != "" ? <div className='absolute left-[920px] text-DarkBlue text-lg font-Roboto font-semibold'>Hai {User.name} </div> : <div className='absolute left-[850px] text-DarkBlue text-lg font-Roboto font-semibold'>Hai Guest </div>}
 
-            <div className='flex gap-4'>
+            <div className='flex flex-col md:flex-row gap-4'>
 
-                <button className='w-[150px] h-7 bg-midnight text-white text-xs' >Buy Now</button>
+                <button className='w-[150px] h-7 bg-midnight text-white text-xs hidden md:block' >Buy Now</button>
                {User&&User.name!="" ?
                 <button onClick={logout} className='w-[60px] h-7 border-2 border-DarkBlue  text-DarkBlue text-xs' >Logout</button>
                :
                <>
                 <Link to="/login">
-                    <button className='w-[60px] h-7 bg-midnight text-white text-xs' >Login</button>
+                    <button className='w-[60px] h-7 bg-midnight text-white text-xs bllocl' >Login</button>
                 </Link>
 
                 <Link to="/signup">
