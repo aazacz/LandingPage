@@ -1,13 +1,15 @@
-const express = require("express")
+import express from 'express'
+import UserRoute from "./Router/UserRoute.js";
+import dotenv from 'dotenv';
+dotenv.config();
+
+import cors from "cors";
+import connectToMongoDB from "./Config/mongodbServer.js";
+const { port } = process.env
+
 const app = express()
-            require('dotenv').config(); 
-const UserRoute = require("./Router/UserRoute")
-const port = process.env.port 
-const cors = require('cors');
-const mongodbconnnect = require('./Config/mongodbServer')
 
-
-mongodbconnnect()
+connectToMongoDB()
 // const corsOptions = {
 //     origin: 'http://localhost:5173.',
 //     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

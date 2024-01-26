@@ -3,14 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Router from './Routes/Router'
-import ErrorBoundary from './Components/ErrorBoundary'
+import { Toaster } from 'react-hot-toast';  // for showing small alerts
 
 function App() {
  
 
   return (
     <>
-    
+     <Toaster  position="top-center"  reverseOrder={false} />
+
      <Router/>
    
     </>

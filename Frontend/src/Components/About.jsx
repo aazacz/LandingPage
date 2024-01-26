@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import TitleIcon from './TitleIcon'
 import HomepageSvg2 from './HomepageSvg2'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
+import axiosInstanceUser from '../Services/AxiosInstance'
 const About = () => {
     const baseUrl = "http://localhost:3000/images"
     const [HomeData, setHomeData] = useState([])
     const [error, setError] = useState(false)
     const [errorMessage, seterrorMessage] = useState("")
     const [loading, setLoading] = useState(true);
+    
     const handleOnError = (e) => {
         e.target.src = "./public/default.jpg";
     }
 
     useEffect(() => {
-        axios.get("http://localhost:3000/homeDetails").then((response) => {
+        axiosInstanceUser.get("/homeDetails").then((response) => {
             console.log(response.data);
             setHomeData(response.data)
             setLoading(false);
         }).catch((error) => {
-            console.log(error.message);
+            setHomeData([])
             setError(true)
             seterrorMessage(error.message);
             setLoading(false);
@@ -35,14 +36,22 @@ const About = () => {
     }
 
     if (error) {
-        throw new Error(errorMessage);
+        console.log("error thrown");
+        // throw new Error(errorMessage);
+         return (
+            <div className="error-message">
+                <p>Error: {errorMessage}</p>
+                {/* Add any additional error handling or messaging here */}
+            </div>
+        );
     }
 
 
     return (
 
          <div className='px-28 py-20 '>
-            <div className='flex items-center'>
+            <div className='flex items-center justify-center'>
+               
                 <div className='w-1/2'>
                     <h1 className='text-TextBlue text-4xl font- font-Roboto'> Light, Fast & Powerful</h1>
                     <span className='text-TextBlue'>
@@ -51,10 +60,11 @@ const About = () => {
                         mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
                     </span>
                     <div className='pt-4 w-full flex mt-8 gap-5  '>
+                      
                         <div className='w-1/2 '>
                             <TitleIcon />
                             <h1 className='text-xl pt-4 font-bold '>Title Goes Here</h1>
-                            <h3 className='pt-2 text-gray-700'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </h3>
+                      d                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <h3 className='pt-2 text-gray-700'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </h3>
                         </div>
                         <div className='w-1/2 '>
                             <TitleIcon />
@@ -71,8 +81,8 @@ const About = () => {
                 </div>
             </div>
 
-            <div className='mt-20 px-14'>
-                {HomeData && HomeData?.map((value, key) => {
+            <div className='mt-20 px-14 '>
+                {HomeData.length>0 && HomeData.map((value, key) => {
                     return (
                         <Link key={key} to={value.link}>
                             <div className='w-full flex py-12 items-center'>
