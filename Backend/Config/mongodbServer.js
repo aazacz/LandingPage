@@ -6,9 +6,9 @@ import dotenv from 'dotenv';
 
  const connectToMongoDB = async () => {
     await mongoose.connect(connection,{
-    useUnifiedTopology:true,
+                 useUnifiedTopology:true,
    }).then(()=>{
-    console.log(`Connected to MongoDB Atlas`);
+    console.log(`Connected to MongoDB`);
 }).catch((error)=>{
     console.log(error.message);
     console.log("Not Connected");
