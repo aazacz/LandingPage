@@ -6,13 +6,13 @@ const Featurepage2 = () => {
     const handleOnError = (e) => {
         console.error("Image loading failed:", e);
         e.target.src =
-            "./public/default.jpg";
+            "/default.jpg";
     }
     return (
         <div className=' w-full flex items-center   '>
 
             <div className=' '>
-                <img src="http://localhost:3000/images/people-01.png" onError={handleOnError} alt="No Image Found" className=' h-screen' />
+                <img src="https://landing-page-gan4.onrender.com/images/people-01.png" onError={handleOnError} alt="No Image Found" className=' h-screen' />
             </div>
 
             <div className='w-1/2 pl-28'>

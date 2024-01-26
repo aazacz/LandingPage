@@ -13,7 +13,7 @@ const About = () => {
     const [loading, setLoading] = useState(true);
     
     const handleOnError = (e) => {
-        e.target.src = "./public/default.jpg";
+        e.target.src = "/default.jpg";
     }
 
     useEffect(() => {

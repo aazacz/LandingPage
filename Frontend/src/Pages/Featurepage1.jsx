@@ -6,7 +6,7 @@ import axios from 'axios'
 const Featurepage1 = () => {
     const [HomeData, setHomeData] = useState([])
     const handleOnError = (e) => {
-        e.target.src = "./public/default.jpg";
+        e.target.src = "/default.jpg";
     }
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const Featurepage1 = () => {
             </div>
 
             <div className='w-1/2 flex justify-center'>
-                <img src="http://localhost:3000/images/mobile-01.png" onError={handleOnError} alt="No Image Found" className='absolute bottom-0 w-[350px]' />
+                <img src="https://landing-page-gan4.onrender.com/images/mobile-01.png" onError={handleOnError} alt="No Image Found" className='absolute bottom-0 w-[350px]' />
             </div>
 
         </div>
